@@ -11,7 +11,7 @@ description: >-
   or produce DXF/PDF drawings for a concept design, even without the words "concept design".
   Not for structural engineering, construction documents or large non-residential buildings.
 license: MIT
-compatibility: Python 3.10+ with ezdxf and PyMuPDF (uv installs them automatically); headless renders need Chrome, Edge or Chromium.
+compatibility: Python 3.10+ with ezdxf, PyMuPDF and Pillow (uv installs them automatically); headless renders need Chrome, Edge or Chromium.
 metadata:
   version: "1.0.0"
   author: Mehran Gharooni

@@ -14,7 +14,7 @@ It makes no network requests, collects no telemetry, and needs no credentials or
 generated 3D page is self-contained; three.js is inlined from the bundled copy, and the page
 loads nothing from the internet.
 
-Dependencies: `ezdxf` and `PyMuPDF` from PyPI, plus optionally `arabic-reshaper` and
+Dependencies: `ezdxf`, `PyMuPDF` and `Pillow` from PyPI, plus optionally `arabic-reshaper` and
 `python-bidi` for right-to-left labels.
 
 ## Reporting a vulnerability

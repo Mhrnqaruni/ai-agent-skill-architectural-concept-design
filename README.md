@@ -54,7 +54,7 @@ brief ──► requirement matrix ──► decision questions ──► specif
   field to fix. `check --json` returns machine-readable findings, and `build` refuses to write
   anything while an error remains.
 - **Portable.** Follows the open Agent Skills format, so it works in Claude Code, Codex and
-  other compatible agents. It needs only Python, `ezdxf` and `PyMuPDF`.
+  other compatible agents. It needs only Python, `ezdxf`, `PyMuPDF` and `Pillow`.
 
 ## Install
 
@@ -69,7 +69,7 @@ Install it the way your agent expects:
 | Any agent (skills CLI) | `npx skills add Mhrnqaruni/ai-agent-skill-architectural-concept-design` |
 | Claude apps | download `architectural-concept-design.zip` from the [latest release](https://github.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design/releases/latest) and upload it under Settings > Capabilities > Skills |
 
-The engine needs Python 3.10 or newer with `ezdxf` and `PyMuPDF`. With
+The engine needs Python 3.10 or newer with `ezdxf`, `PyMuPDF` and `Pillow`. With
 [uv](https://docs.astral.sh/uv/) the agent runs `uv run scripts/concept.py ...`, which installs
 them automatically. Otherwise run `pip install -r scripts/requirements.txt` once. Renders also
 need Chrome, Edge or Chromium.

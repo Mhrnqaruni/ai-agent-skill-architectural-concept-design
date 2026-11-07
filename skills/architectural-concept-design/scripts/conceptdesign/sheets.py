@@ -11,7 +11,10 @@ import math
 import re
 from pathlib import Path
 
-import fitz
+try:
+    import pymupdf as fitz
+except ImportError:                      # pragma: no cover - PyMuPDF before 1.24.3
+    import fitz
 from ezdxf import recover
 from ezdxf.addons.drawing import Frontend, RenderContext, config, layout, pymupdf
 

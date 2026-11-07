@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["ezdxf>=1.4,<2", "PyMuPDF>=1.24"]
+# dependencies = ["ezdxf>=1.4,<2", "PyMuPDF>=1.24", "Pillow>=10"]
 # ///
 """Architectural concept design engine.
 
