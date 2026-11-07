@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.zip binary
+skills/architectural-concept-design/assets/viewer/three-r147/** linguist-vendored

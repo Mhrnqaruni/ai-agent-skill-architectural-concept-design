@@ -1,0 +1,27 @@
+{
+  "name": "architectural-concept-design",
+  "owner": {
+    "name": "Mehran Gharooni",
+    "url": "https://github.com/Mhrnqaruni"
+  },
+  "metadata": {
+    "description": "Agent skill: a building brief becomes a checked concept design with CAD drawings, a furnished 3D model and an area schedule.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "architectural-concept-design",
+      "description": "Turns a building brief into a checked concept design: floor plans, elevations and a section (DXF, PDF), a furnished three.js model and an exact area schedule, with circulation, door-swing, daylight, stair, area and setback rules checked first.",
+      "version": "1.0.0",
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/architectural-concept-design"],
+      "author": {"name": "Mehran Gharooni", "url": "https://github.com/Mhrnqaruni"},
+      "homepage": "https://github.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design",
+      "repository": "https://github.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design",
+      "license": "MIT",
+      "keywords": ["architecture", "floor-plan", "cad", "dxf", "3d", "threejs", "design"],
+      "category": "design"
+    }
+  ]
+}

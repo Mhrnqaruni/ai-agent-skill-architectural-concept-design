@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>3D model</title>
+<link rel="icon" href="data:,">
+<style>
+  :root { --ink: #1f2328; --muted: #5d6670; --card: rgba(255,255,255,0.93); --line: #d9dde1;
+    --accent: #23506b; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #f2f2f0;
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif; color: var(--ink); }
+  #view { position: fixed; inset: 0; }
+  .labels { position: absolute; inset: 0; pointer-events: none; }
+  .lbl { background: rgba(255,255,255,0.86); border-radius: 5px; padding: 1px 6px 2px;
+    font-size: 11px; line-height: 1.25; text-align: center; white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+  .lbl b { display: block; font-weight: 600; }
+  .lbl span { display: block; unicode-bidi: plaintext; font-size: 10.5px; color: #3f4750; }
+  #card { position: fixed; top: 12px; left: 12px; background: var(--card); border: 1px solid var(--line);
+    border-radius: 10px; padding: 10px 14px; max-width: min(340px, calc(100vw - 104px)); }
+  #card h1 { margin: 0; font-size: 16px; }
+  #card .alt { unicode-bidi: plaintext; font-size: 14px; margin-top: 2px; color: var(--muted); }
+  #card .alt:empty { display: none; }
+  #card p { margin: 6px 0 0; font-size: 12px; color: var(--muted); }
+  #floorname { margin-top: 6px; font-size: 13px; font-weight: 600; color: var(--accent); }
+  #north { position: fixed; top: 12px; right: 12px; width: 60px; height: 60px; background: var(--card);
+    border: 1px solid var(--line); border-radius: 50%; display: grid; place-items: center; }
+  #north svg { width: 42px; height: 42px; }
+  #bar { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; gap: 6px;
+    flex-wrap: wrap; justify-content: center; width: min(820px, calc(100vw - 24px)); }
+  #bar button { font: inherit; font-size: 13px; padding: 8px 11px; border-radius: 8px; cursor: pointer;
+    border: 1px solid var(--line); background: var(--card); color: var(--ink); min-width: 88px; }
+  #bar button .alt { display: block; unicode-bidi: plaintext; font-size: 12px; }
+  #bar button.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+  body.still #card, body.still #bar, body.still #north { display: none; }
+  @media (max-width: 560px) { #card p { display: none; } #bar button { min-width: 70px; padding: 7px 8px; }
+    .lbl { font-size: 9px; padding: 1px 4px; } .lbl span { font-size: 8.5px; }
+    #card { padding: 7px 10px; } #card h1 { font-size: 14px; } }
+</style>
+</head>
+<body>
+<div id="view"></div>
+<div id="card">
+  <h1 id="title"></h1>
+  <div class="alt" id="subtitle"></div>
+  <div id="floorname"></div>
+  <p>Drag to turn, scroll or pinch to zoom, right-drag or two fingers to move.
+     Furniture shows how the rooms can be used.</p>
+</div>
+<div id="north" title="North"><svg viewBox="-22 -22 44 44"><g id="needle">
+  <polygon points="0,-18 7,6 0,1 -7,6" fill="#1f2328"/><text x="0" y="17" font-size="10"
+  text-anchor="middle" font-family="Segoe UI, Arial">N</text></g></svg></div>
+<div id="bar"></div>
+<script>/*THREE*/</script>
+<script>/*ORBIT*/</script>
+<script>/*CSS2D*/</script>
+<script>window.SCENE = /*SCENE*/;</script>
+<script>/*APP*/</script>
+</body>
+</html>

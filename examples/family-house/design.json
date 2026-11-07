@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "project": {
+    "title": "Two-Storey Family House",
+    "subtitle": "Example project - concept study",
+    "revision": "A",
+    "date": "2026-11-08"
+  },
+  "site": {
+    "boundary": [[0, 0], [18, 0], [18, 30], [0, 30]],
+    "street_side": "N",
+    "setbacks": [6.0, 3.0, 5.0, 3.0],
+    "boundary_wall": 1.1,
+    "gates": [[2, 1.8, 6.8], [2, 8.0, 9.4]],
+    "paving": [[8.6, 24.2, 10.0, 30.0], [11.2, 24.8, 16.2, 29.9], [4.0, 13.6, 14.0, 17.0]],
+    "parking": [
+      {"rect": [11.3, 24.9, 13.6, 29.8], "facing": "N"},
+      {"rect": [13.9, 24.9, 16.2, 29.8], "facing": "N"}
+    ],
+    "trees": "auto",
+    "patio_set": [12.0, 15.3],
+    "labels": [
+      {"name": "Garden", "at": [9.0, 8.0]},
+      {"name": "Terrace", "at": [6.4, 15.3]}
+    ]
+  },
+  "building": {
+    "exterior_wall": 0.3,
+    "partition": 0.1,
+    "facade": "render",
+    "roof": {"type": "gable", "ridge": "x", "pitch": 35, "overhang": 0.5}
+  },
+  "levels": [
+    {
+      "id": "G",
+      "name": "Ground floor",
+      "elevation": 0.0,
+      "height": 3.0,
+      "footprint": [[3.3, 17.0, 14.7, 24.2]],
+      "area_limit": 85,
+      "entrance": [9.3, 23.4],
+      "walls": [
+        [7.6, 17.3, 7.7, 23.9],
+        [9.8, 17.3, 9.9, 23.9],
+        [7.7, 18.5, 9.8, 18.6]
+      ],
+      "openings": [
+        {"type": "door", "at": [8.85, 23.9, 9.75, 24.2], "hinge": "E", "opens": "S"},
+        {"type": "door", "at": [7.6, 22.95, 7.7, 23.75], "hinge": "N", "opens": "W"},
+        {"type": "door", "at": [8.9, 18.5, 9.6, 18.6], "hinge": "E", "opens": "S"},
+        {"type": "opening", "at": [9.8, 19.4, 9.9, 21.0]},
+        {"type": "window", "at": [4.4, 23.9, 6.6, 24.2], "sill": 0.9, "head": 2.2},
+        {"type": "window", "at": [11.4, 23.9, 12.8, 24.2], "sill": 1.05, "head": 2.1},
+        {"type": "sliding", "at": [4.2, 17.0, 7.0, 17.3]},
+        {"type": "window", "at": [8.2, 17.0, 8.8, 17.3], "sill": 1.5, "head": 2.1},
+        {"type": "sliding", "at": [10.6, 17.0, 13.6, 17.3]},
+        {"type": "window", "at": [14.4, 18.3, 14.7, 20.1], "sill": 0.9, "head": 2.2},
+        {"type": "window", "at": [14.4, 21.3, 14.7, 22.5], "sill": 0.9, "head": 2.2}
+      ],
+      "rooms": [
+        {"name": "Living room", "rect": [3.6, 17.3, 7.6, 23.9], "use": "living", "label_at": [5.2, 22.5]},
+        {"name": "Hall", "rect": [7.7, 18.6, 9.8, 23.9], "cutouts": [[7.7, 18.6, 8.7, 22.8]], "use": "hall",
+         "label_at": [9.25, 21.6]},
+        {"name": "WC", "rect": [7.7, 17.3, 9.8, 18.5], "use": "wc", "label_at": [8.75, 17.95]},
+        {"name": "Kitchen + dining", "rect": [9.9, 17.3, 14.4, 23.9], "use": "kitchen", "label_at": [12.2, 20.65]}
+      ],
+      "stairs": [
+        {"rect": [7.7, 18.6, 8.7, 22.8], "type": "straight", "up": "S"}
+      ],
+      "furniture": [
+        {"type": "tv", "rect": [3.6, 19.6, 4.05, 21.4], "back": "W"},
+        {"type": "sofa", "rect": [5.9, 19.4, 6.8, 21.6], "back": "E"},
+        {"type": "coffee_table", "rect": [4.75, 20.05, 5.35, 20.95]},
+        {"type": "armchair", "rect": [4.6, 18.3, 5.4, 19.1], "back": "S"},
+        {"type": "rug", "rect": [4.4, 19.4, 6.7, 21.6], "color": "c"},
+        {"type": "shelves", "rect": [4.0, 23.55, 5.8, 23.9], "back": "N"},
+        {"type": "plant", "at": [3.92, 18.3], "size": 0.17, "height": 1.4},
+        {"type": "wc", "at": [7.7, 17.75], "back": "W"},
+        {"type": "basin", "rect": [9.3, 17.3, 9.75, 17.7], "back": "S"},
+        {"type": "kitchen", "rect": [10.55, 23.3, 14.4, 23.9], "back": "N"},
+        {"type": "fridge", "rect": [9.9, 23.3, 10.55, 23.9], "back": "N"},
+        {"type": "island", "rect": [11.0, 21.4, 13.4, 22.3]},
+        {"type": "stools", "rect": [11.0, 21.4, 13.4, 22.3], "count": 3, "sides": "S"},
+        {"type": "dining_table", "rect": [11.2, 18.6, 13.0, 19.6], "seats": 6},
+        {"type": "plant", "at": [14.05, 23.0], "size": 0.17, "height": 1.3}
+      ]
+    },
+    {
+      "id": "F",
+      "name": "First floor",
+      "elevation": 3.0,
+      "height": 2.8,
+      "footprint": [[3.3, 17.0, 14.7, 24.2]],
+      "area_limit": 85,
+      "walls": [
+        [7.6, 17.3, 7.7, 23.9],
+        [9.8, 17.3, 9.9, 23.9],
+        [3.6, 21.2, 7.6, 21.3],
+        [5.3, 21.3, 5.4, 23.9],
+        [9.9, 20.4, 14.4, 20.5]
+      ],
+      "openings": [
+        {"type": "door", "at": [7.6, 17.6, 7.7, 18.4], "hinge": "S", "opens": "W"},
+        {"type": "door", "at": [4.0, 21.2, 4.7, 21.3], "hinge": "W", "opens": "N"},
+        {"type": "door", "at": [7.6, 22.95, 7.7, 23.75], "hinge": "N", "opens": "W"},
+        {"type": "door", "at": [9.8, 19.5, 9.9, 20.3], "hinge": "N", "opens": "E"},
+        {"type": "door", "at": [9.8, 20.7, 9.9, 21.5], "hinge": "S", "opens": "E"},
+        {"type": "window", "at": [4.2, 17.0, 6.8, 17.3], "sill": 0.6, "head": 2.1},
+        {"type": "window", "at": [8.0, 17.0, 9.5, 17.3], "sill": 0.9, "head": 2.1},
+        {"type": "window", "at": [10.6, 17.0, 13.0, 17.3], "sill": 0.9, "head": 2.1},
+        {"type": "window", "at": [4.0, 23.9, 4.8, 24.2], "sill": 1.5, "head": 2.1},
+        {"type": "window", "at": [5.8, 23.9, 6.6, 24.2], "sill": 1.5, "head": 2.1},
+        {"type": "window", "at": [7.9, 23.9, 8.6, 24.2], "sill": 0.9, "head": 2.1},
+        {"type": "window", "at": [10.9, 23.9, 13.3, 24.2], "sill": 0.9, "head": 2.1}
+      ],
+      "rooms": [
+        {"name": "Main bedroom", "rect": [3.6, 17.3, 7.6, 21.2], "use": "bedroom", "label_at": [6.6, 20.2]},
+        {"name": "En-suite", "rect": [3.6, 21.3, 5.3, 23.9], "use": "bath", "label_at": [4.75, 22.15]},
+        {"name": "Bathroom", "rect": [5.4, 21.3, 7.6, 23.9], "use": "bath", "label_at": [6.85, 22.4]},
+        {"name": "Landing", "rect": [7.7, 17.3, 9.8, 23.9], "cutouts": [[7.7, 18.6, 8.7, 22.8]], "use": "hall",
+         "label_at": [9.25, 21.6]},
+        {"name": "Bedroom 2", "rect": [9.9, 17.3, 14.4, 20.4], "use": "bedroom", "label_at": [11.4, 18.9]},
+        {"name": "Bedroom 3", "rect": [9.9, 20.5, 14.4, 23.9], "use": "bedroom", "label_at": [11.4, 22.2]}
+      ],
+      "furniture": [
+        {"type": "bed", "rect": [3.6, 18.45, 5.6, 20.05], "back": "W"},
+        {"type": "nightstand", "rect": [3.6, 17.95, 4.05, 18.4], "back": "W"},
+        {"type": "nightstand", "rect": [3.6, 20.1, 4.05, 20.55], "back": "W"},
+        {"type": "wardrobe", "rect": [5.4, 20.6, 7.4, 21.2], "back": "N"},
+        {"type": "rug", "rect": [4.6, 18.1, 6.6, 20.4], "color": "a"},
+        {"type": "plant", "at": [6.4, 17.65], "size": 0.17, "height": 1.35},
+        {"type": "shower", "rect": [3.65, 23.0, 4.55, 23.9]},
+        {"type": "wc", "at": [3.6, 22.4], "back": "W"},
+        {"type": "basin", "rect": [4.85, 22.3, 5.3, 22.85], "back": "E"},
+        {"type": "bathtub", "rect": [5.45, 21.3, 6.2, 23.0]},
+        {"type": "wc", "at": [6.5, 23.9], "back": "N"},
+        {"type": "basin", "rect": [6.6, 21.3, 7.2, 21.75], "back": "S"},
+        {"type": "plant", "at": [9.35, 17.75], "size": 0.17, "height": 1.3},
+        {"type": "bed", "rect": [12.4, 18.15, 14.4, 19.55], "back": "E"},
+        {"type": "nightstand", "rect": [13.95, 17.65, 14.4, 18.1], "back": "E"},
+        {"type": "nightstand", "rect": [13.95, 19.6, 14.4, 20.05], "back": "E"},
+        {"type": "desk", "rect": [10.3, 17.3, 11.5, 17.9], "back": "S"},
+        {"type": "wardrobe", "rect": [10.8, 19.8, 12.3, 20.4], "back": "N"},
+        {"type": "bed", "rect": [12.4, 21.5, 14.4, 22.9], "back": "E"},
+        {"type": "nightstand", "rect": [13.95, 21.0, 14.4, 21.45], "back": "E"},
+        {"type": "nightstand", "rect": [13.95, 22.95, 14.4, 23.4], "back": "E"},
+        {"type": "desk", "rect": [10.4, 23.3, 11.6, 23.9], "back": "N"},
+        {"type": "wardrobe", "rect": [10.8, 20.5, 12.3, 21.1], "back": "S"}
+      ]
+    }
+  ]
+}

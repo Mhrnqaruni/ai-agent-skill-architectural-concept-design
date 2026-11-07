@@ -1,0 +1,5 @@
+ezdxf>=1.4,<2
+PyMuPDF>=1.24
+# optional, for joined right-to-left labels in second-language names:
+# arabic-reshaper>=3.0
+# python-bidi>=0.5

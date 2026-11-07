@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: handles-a-vague-brief
+expected_outcome: |
+  The brief is missing site facts and key decisions. A good response asks a few focused decision
+  questions (each with three options, a recommendation and a reason) and asks for the site facts,
+  or proceeds on clearly listed assumptions with the site marked as a placeholder. It never
+  presents an invented plot size, orientation, setback or area limit as fact.

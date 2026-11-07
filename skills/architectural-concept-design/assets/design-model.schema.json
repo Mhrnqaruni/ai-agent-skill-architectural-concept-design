@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design/main/skills/architectural-concept-design/assets/design-model.schema.json",
+  "title": "Architectural concept design model",
+  "description": "One building: site, levels, walls, openings, rooms, stairs and furniture. Metres; x east, y north; rectangles are [x0, y0, x1, y1] with x0 < x1 and y0 < y1.",
+  "type": "object",
+  "required": ["project", "levels"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": 1},
+    "project": {
+      "type": "object",
+      "required": ["title"],
+      "additionalProperties": false,
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "subtitle": {"type": "string"},
+        "alt_title": {"type": "string"},
+        "stage": {"type": "string"},
+        "revision": {"type": "string"},
+        "date": {"type": "string"},
+        "author": {"type": "string"},
+        "notes": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "site": {
+      "type": "object",
+      "required": ["boundary"],
+      "additionalProperties": false,
+      "properties": {
+        "boundary": {"type": "array", "minItems": 3, "items": {"$ref": "#/$defs/point"}},
+        "street_side": {"$ref": "#/$defs/side"},
+        "setbacks": {"type": ["array", "null"], "items": {"type": ["number", "null"], "minimum": 0}},
+        "north_deg": {"type": "number", "minimum": -360, "maximum": 360},
+        "boundary_wall": {"type": "number", "minimum": 0, "maximum": 3},
+        "gates": {"type": "array", "items": {"type": "array", "prefixItems": [{"type": "integer"}, {"type": "number"}, {"type": "number"}], "minItems": 3, "maxItems": 3}},
+        "paving": {"type": "array", "items": {"$ref": "#/$defs/rect"}},
+        "parking": {"type": "array", "items": {"type": "object", "required": ["rect"], "additionalProperties": false,
+                    "properties": {"rect": {"$ref": "#/$defs/rect"}, "facing": {"$ref": "#/$defs/side"}}}},
+        "trees": {"oneOf": [{"enum": ["auto", "none"]},
+                            {"type": "array", "items": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 3}}]},
+        "patio_set": {"$ref": "#/$defs/point"},
+        "labels": {"type": "array", "items": {"type": "object", "required": ["name", "at"], "additionalProperties": false,
+                   "properties": {"name": {"type": "string"}, "alt_name": {"type": "string"}, "at": {"$ref": "#/$defs/point"}}}}
+      }
+    },
+    "building": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exterior_wall": {"type": "number", "minimum": 0.1, "maximum": 0.8},
+        "partition": {"type": "number", "minimum": 0.05, "maximum": 0.4},
+        "facade": {"enum": ["render", "brick", "stone", "timber"]},
+        "section": {
+          "type": "object",
+          "required": ["line", "at"],
+          "additionalProperties": false,
+          "properties": {"line": {"enum": ["north-south", "east-west"]}, "at": {"type": "number"}}
+        },
+        "roof": {
+          "type": "object",
+          "required": ["type"],
+          "additionalProperties": false,
+          "properties": {
+            "type": {"enum": ["gable", "flat"]},
+            "ridge": {"enum": ["x", "y"]},
+            "pitch": {"type": "number", "minimum": 5, "maximum": 60},
+            "overhang": {"type": "number", "minimum": 0, "maximum": 1.5},
+            "parapet": {"type": "number", "minimum": 0, "maximum": 1.5}
+          }
+        }
+      }
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "daylight_ratio": {"type": "number", "minimum": 0, "maximum": 1},
+        "min_door_width": {"type": "number", "minimum": 0},
+        "min_bedroom_area": {"type": "number", "minimum": 0},
+        "max_riser": {"type": "number", "minimum": 0},
+        "min_going": {"type": "number", "minimum": 0},
+        "stair_comfort": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+        "min_stair_width": {"type": "number", "minimum": 0}
+      }
+    },
+    "levels": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/level"}}
+  },
+  "$defs": {
+    "point": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+    "rect": {"type": "array", "items": {"type": "number"}, "minItems": 4, "maxItems": 4},
+    "side": {"enum": ["N", "E", "S", "W"]},
+    "level": {
+      "type": "object",
+      "required": ["id", "elevation", "footprint"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Za-z0-9_]{1,16}$"},
+        "name": {"type": "string"},
+        "alt_name": {"type": "string"},
+        "elevation": {"type": "number"},
+        "height": {"type": "number", "minimum": 2.2, "maximum": 8},
+        "footprint": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/rect"}},
+        "area_limit": {"type": "number", "exclusiveMinimum": 0},
+        "entrance": {"$ref": "#/$defs/point"},
+        "finish": {"$ref": "#/$defs/finish"},
+        "walls": {"type": "array", "items": {"$ref": "#/$defs/rect"}},
+        "openings": {"type": "array", "items": {"$ref": "#/$defs/opening"}},
+        "rooms": {"type": "array", "items": {"$ref": "#/$defs/room"}},
+        "stairs": {"type": "array", "items": {"$ref": "#/$defs/stair"}},
+        "furniture": {"type": "array", "items": {"$ref": "#/$defs/item"}},
+        "dimensions": {"type": "object", "additionalProperties": false,
+                       "properties": {"x": {"type": "array", "items": {"type": "number"}},
+                                      "y": {"type": "array", "items": {"type": "number"}}}}
+      }
+    },
+    "finish": {"enum": ["wood", "tile", "stone", "concrete", "deck"]},
+    "opening": {
+      "type": "object",
+      "required": ["type", "at"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"enum": ["door", "sliding", "opening", "window"]},
+        "at": {"$ref": "#/$defs/rect"},
+        "hinge": {"$ref": "#/$defs/side"},
+        "opens": {"$ref": "#/$defs/side"},
+        "sill": {"type": "number", "minimum": 0, "maximum": 3},
+        "head": {"type": "number", "minimum": 0.3, "maximum": 4}
+      },
+      "allOf": [{"if": {"properties": {"type": {"const": "door"}}},
+                 "then": {"required": ["hinge", "opens"]}}]
+    },
+    "room": {
+      "type": "object",
+      "required": ["name", "rect"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "alt_name": {"type": "string"},
+        "rect": {"$ref": "#/$defs/rect"},
+        "cutouts": {"type": "array", "items": {"$ref": "#/$defs/rect"}},
+        "label_at": {"$ref": "#/$defs/point"},
+        "use": {"enum": ["living", "dining", "kitchen", "bedroom", "study", "bath", "wc", "hall", "corridor",
+                         "storage", "utility", "laundry", "closet", "garage", "plant", "terrace", "other"]},
+        "finish": {"$ref": "#/$defs/finish"},
+        "access": {"enum": ["inside", "outside"]}
+      }
+    },
+    "stair": {
+      "type": "object",
+      "required": ["rect", "up"],
+      "additionalProperties": false,
+      "properties": {
+        "rect": {"$ref": "#/$defs/rect"},
+        "type": {"enum": ["straight", "u"]},
+        "up": {"$ref": "#/$defs/side"},
+        "turn": {"enum": ["left", "right"]}
+      }
+    },
+    "item": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"enum": ["bed", "nightstand", "wardrobe", "hanging_rail", "shoe_cabinet", "desk", "shelves", "sofa",
+                          "armchair", "coffee_table", "dining_table", "tv", "rug", "kitchen", "island", "fridge",
+                          "laundry", "bar", "basin", "shower", "bathtub", "sauna", "billiards", "boiler", "stools",
+                          "wc", "chair", "barstool", "plant", "tank"]},
+        "rect": {"$ref": "#/$defs/rect"},
+        "at": {"$ref": "#/$defs/point"},
+        "back": {"$ref": "#/$defs/side"},
+        "color": {"enum": ["a", "b", "c"]},
+        "size": {"type": "number", "exclusiveMinimum": 0},
+        "height": {"type": "number", "exclusiveMinimum": 0},
+        "count": {"type": "integer", "minimum": 1},
+        "sides": {"enum": ["N", "S", "NS"]},
+        "seats": {"type": "integer", "minimum": 1},
+        "sink_at": {"$ref": "#/$defs/point"}
+      },
+      "oneOf": [{"required": ["rect"]}, {"required": ["at"]}]
+    }
+  }
+}

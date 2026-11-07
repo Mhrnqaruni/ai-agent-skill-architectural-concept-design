@@ -1,0 +1,7 @@
+# Tool configuration for development and CI. The skill itself lives in
+# skills/architectural-concept-design/ and needs only its scripts/requirements.txt.
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["slow: builds the full example drawing set"]
+addopts = "-ra"

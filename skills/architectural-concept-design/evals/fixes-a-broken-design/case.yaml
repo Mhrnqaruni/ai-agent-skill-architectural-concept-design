@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: fixes-a-broken-design
+expected_outcome: |
+  The check of the supplied design.json reports two errors: a nightstand inside the bedroom
+  door's swing, and a bathroom with no door, which makes it unreachable. The fix moves the
+  nightstand clear of the swing and adds a bathroom door, without moving any room or wall. The
+  check then reports 0 errors and the build writes the drawings and the 3D model.
+context:
+  scaffold_script: place-files.sh

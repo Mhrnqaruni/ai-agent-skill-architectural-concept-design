@@ -1,0 +1,87 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Tests (${{ matrix.os }}, Python ${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.10", "3.12", "3.13"]
+        include:
+          - os: windows-latest
+            python-version: "3.12"
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: skills/architectural-concept-design/scripts/requirements.txt
+
+      - name: Fonts for the drawing renderer
+        if: runner.os == 'Linux'
+        run: sudo apt-get update -q && sudo apt-get install -y -q --no-install-recommends fonts-dejavu-core
+
+      - name: Install
+        run: python -m pip install -r skills/architectural-concept-design/scripts/requirements.txt pytest jsonschema pyyaml
+
+      - name: Engine and documentation tests
+        run: python -m pytest -q
+
+  skill:
+    name: Skill format and example build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: skills/architectural-concept-design/scripts/requirements.txt
+
+      - name: Fonts for the drawing renderer
+        run: sudo apt-get update -q && sudo apt-get install -y -q --no-install-recommends fonts-dejavu-core
+
+      - name: Validate SKILL.md against the Agent Skills specification
+        run: |
+          python -m pip install skills-ref
+          python -c "import sys; from pathlib import Path; from skills_ref import validate; p = validate(Path('skills/architectural-concept-design')); print(p or 'skills-ref: valid'); sys.exit(1 if p else 0)"
+
+      - name: Versions agree
+        run: python tools/check_versions.py
+
+      - name: Build the example project
+        run: |
+          python -m pip install -r skills/architectural-concept-design/scripts/requirements.txt
+          python skills/architectural-concept-design/scripts/concept.py check examples/family-house/design.json --strict
+          python skills/architectural-concept-design/scripts/concept.py build examples/family-house/design.json --renders
+
+      - name: Package the skill
+        run: python tools/package_skill.py
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: example-and-skill
+          path: |
+            examples/family-house/output/drawings/concept-drawings.pdf
+            examples/family-house/output/model/index.html
+            examples/family-house/output/model/renders/
+            dist/architectural-concept-design.zip
+          retention-days: 14

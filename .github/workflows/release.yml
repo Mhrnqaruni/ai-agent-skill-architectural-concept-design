@@ -1,0 +1,59 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Fonts for the drawing renderer
+        run: sudo apt-get update -q && sudo apt-get install -y -q --no-install-recommends fonts-dejavu-core
+
+      - name: Install
+        run: python -m pip install -r skills/architectural-concept-design/scripts/requirements.txt
+
+      - name: Tag matches every version number
+        run: python tools/check_versions.py "${GITHUB_REF_NAME}"
+
+      - name: Build the example project and package the skill
+        run: |
+          python skills/architectural-concept-design/scripts/concept.py build examples/family-house/design.json --renders
+          python tools/package_skill.py
+          out=examples/family-house/output
+          cp "$out/drawings/concept-drawings.pdf" dist/family-house-drawings.pdf
+          cp "$out/model/index.html" dist/family-house-3d-model.html
+          (cd "$out/drawings/dxf" && zip -q -r "$GITHUB_WORKSPACE/dist/family-house-dxf.zip" .)
+          (cd "$out/model/renders" && zip -q -r "$GITHUB_WORKSPACE/dist/family-house-renders.zip" .)
+          ls -l dist
+
+      - name: Release notes from the changelog
+        run: |
+          python - "${GITHUB_REF_NAME}" > notes.md <<'EOF'
+          import re, sys
+          version = sys.argv[1].lstrip("v")
+          text = open("CHANGELOG.md", encoding="utf-8").read()
+          m = re.search(r"^## \[" + re.escape(version) + r"\][^\n]*\n(.*?)(?=^## \[|^\[|\Z)", text, re.S | re.M)
+          print("Install the skill from `architectural-concept-design.zip` or see the README for every agent.\n")
+          print("The `family-house-*` files are the example project's build: drawings, DXF sheets, 3D model and renders.\n")
+          print(m.group(1).strip() if m else f"Release {version}")
+          EOF
+          cat notes.md
+
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" --title "${GITHUB_REF_NAME}" --notes-file notes.md \
+            dist/architectural-concept-design.zip dist/family-house-drawings.pdf dist/family-house-3d-model.html \
+            dist/family-house-dxf.zip dist/family-house-renders.zip

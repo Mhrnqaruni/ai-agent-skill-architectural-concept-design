@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Architectural Concept Design: an agent skill"
+abstract: >-
+  An Agent Skill for Claude Code, Codex and other compatible coding agents that turns a building
+  brief into a checked concept design package. The agent writes one JSON design model; a bundled
+  engine checks circulation, door swings, daylight, stairs, area limits and setbacks, then
+  generates CAD floor plans, elevations and a section (DXF, PDF), a furnished interactive
+  three.js model and an exact area schedule.
+authors:
+  - family-names: Gharooni
+    given-names: Mehran
+version: 1.0.0
+date-released: 2026-11-08
+license: MIT
+repository-code: "https://github.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design"
+keywords:
+  - agent skills
+  - Claude Code
+  - Codex
+  - architectural design
+  - computational design
+  - floor plan
+  - CAD
+  - DXF
+  - three.js
+  - design automation

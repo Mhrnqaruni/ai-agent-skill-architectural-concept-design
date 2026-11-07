@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: designs-two-bedroom-bungalow
+expected_outcome: |
+  A bungalow/ folder with a valid design.json for a 16 x 24 m site (street south, setbacks
+  5/2/5/2 m, area limit 95 m2), a passing design-rule check (0 errors), and the built outputs:
+  the drawing set PDF, the 3D model HTML and the area schedule. The plan has two bedrooms, one
+  bathroom, a separate WC, storage and an open kitchen-living room on the north (garden) side.

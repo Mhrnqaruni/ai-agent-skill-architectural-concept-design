@@ -1,0 +1,322 @@
+{
+  "schema_version": 1,
+  "project": {
+    "title": "Garden Cottage",
+    "subtitle": "Concept study",
+    "revision": "A"
+  },
+  "building": {
+    "exterior_wall": 0.3,
+    "partition": 0.1,
+    "facade": "render",
+    "roof": {
+      "type": "flat",
+      "parapet": 0.5
+    }
+  },
+  "levels": [
+    {
+      "id": "G",
+      "name": "Ground floor",
+      "elevation": 0.0,
+      "height": 2.9,
+      "footprint": [
+        [
+          0.0,
+          0.0,
+          8.4,
+          6.0
+        ]
+      ],
+      "entrance": [
+        1.35,
+        0.8
+      ],
+      "walls": [
+        [
+          5.0,
+          0.3,
+          5.1,
+          5.7
+        ],
+        [
+          5.1,
+          2.3,
+          8.1,
+          2.4
+        ]
+      ],
+      "openings": [
+        {
+          "type": "door",
+          "at": [
+            0.9,
+            0.0,
+            1.8,
+            0.3
+          ],
+          "hinge": "W",
+          "opens": "N"
+        },
+        {
+          "type": "door",
+          "at": [
+            5.0,
+            2.6,
+            5.1,
+            3.4
+          ],
+          "hinge": "S",
+          "opens": "E"
+        },
+        {
+          "type": "window",
+          "at": [
+            2.4,
+            0.0,
+            4.4,
+            0.3
+          ],
+          "sill": 0.9,
+          "head": 2.2
+        },
+        {
+          "type": "window",
+          "at": [
+            0.0,
+            2.6,
+            0.3,
+            4.2
+          ],
+          "sill": 0.9,
+          "head": 2.2
+        },
+        {
+          "type": "window",
+          "at": [
+            1.2,
+            5.7,
+            2.4,
+            6.0
+          ],
+          "sill": 1.05,
+          "head": 2.1
+        },
+        {
+          "type": "window",
+          "at": [
+            6.2,
+            5.7,
+            7.6,
+            6.0
+          ],
+          "sill": 0.9,
+          "head": 2.1
+        },
+        {
+          "type": "window",
+          "at": [
+            8.1,
+            0.8,
+            8.4,
+            1.4
+          ],
+          "sill": 1.5,
+          "head": 2.1
+        }
+      ],
+      "rooms": [
+        {
+          "name": "Living + kitchen",
+          "rect": [
+            0.3,
+            0.3,
+            5.0,
+            5.7
+          ],
+          "use": "living",
+          "label_at": [
+            3.2,
+            4.6
+          ]
+        },
+        {
+          "name": "Bedroom",
+          "rect": [
+            5.1,
+            2.4,
+            8.1,
+            5.7
+          ],
+          "use": "bedroom",
+          "label_at": [
+            6.2,
+            4.95
+          ]
+        },
+        {
+          "name": "Bathroom",
+          "rect": [
+            5.1,
+            0.3,
+            8.1,
+            2.3
+          ],
+          "use": "bath",
+          "label_at": [
+            6.5,
+            1.6
+          ]
+        }
+      ],
+      "furniture": [
+        {
+          "type": "kitchen",
+          "rect": [
+            0.3,
+            5.1,
+            3.2,
+            5.7
+          ],
+          "back": "N"
+        },
+        {
+          "type": "fridge",
+          "rect": [
+            3.2,
+            5.1,
+            3.85,
+            5.7
+          ],
+          "back": "N"
+        },
+        {
+          "type": "dining_table",
+          "rect": [
+            1.0,
+            3.2,
+            2.4,
+            4.0
+          ],
+          "seats": 4
+        },
+        {
+          "type": "sofa",
+          "rect": [
+            3.6,
+            1.2,
+            4.5,
+            3.0
+          ],
+          "back": "E"
+        },
+        {
+          "type": "tv",
+          "rect": [
+            0.3,
+            1.5,
+            0.75,
+            2.5
+          ],
+          "back": "W"
+        },
+        {
+          "type": "coffee_table",
+          "rect": [
+            2.3,
+            1.8,
+            2.9,
+            2.5
+          ]
+        },
+        {
+          "type": "rug",
+          "rect": [
+            1.6,
+            1.3,
+            3.5,
+            2.95
+          ],
+          "color": "b"
+        },
+        {
+          "type": "bed",
+          "rect": [
+            6.1,
+            3.0,
+            8.1,
+            4.6
+          ],
+          "back": "E"
+        },
+        {
+          "type": "nightstand",
+          "rect": [
+            7.65,
+            4.65,
+            8.1,
+            5.1
+          ],
+          "back": "E"
+        },
+        {
+          "type": "nightstand",
+          "rect": [
+            7.65,
+            2.45,
+            8.1,
+            2.9
+          ],
+          "back": "E"
+        },
+        {
+          "type": "wardrobe",
+          "rect": [
+            5.1,
+            4.2,
+            5.7,
+            5.6
+          ],
+          "back": "W"
+        },
+        {
+          "type": "shower",
+          "rect": [
+            7.2,
+            0.3,
+            8.1,
+            1.2
+          ]
+        },
+        {
+          "type": "wc",
+          "at": [
+            8.1,
+            1.75
+          ],
+          "back": "E"
+        },
+        {
+          "type": "basin",
+          "rect": [
+            5.6,
+            0.3,
+            6.2,
+            0.75
+          ],
+          "back": "S"
+        },
+        {
+          "type": "nightstand",
+          "rect": [
+            5.15,
+            2.8,
+            5.6,
+            3.25
+          ],
+          "back": "W"
+        }
+      ]
+    }
+  ]
+}
