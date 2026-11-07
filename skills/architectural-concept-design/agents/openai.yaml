@@ -1,0 +1,5 @@
+interface:
+  display_name: "Architectural Concept Design"
+  short_description: "Brief to checked floor plans, CAD drawings, a furnished 3D model and areas"
+  brand_color: "#23506B"
+  default_prompt: "Design a two-bedroom single-storey house for my plot and give me floor plans and a 3D model."

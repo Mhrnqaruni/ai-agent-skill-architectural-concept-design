@@ -63,11 +63,11 @@ Install it the way your agent expects:
 
 | Agent | Install |
 |---|---|
-| Claude Code (plugin) | `/plugin marketplace add Mhrnqaruni/ai-agent-skill-architectural-concept-design`, then `/plugin install architectural-concept-design@architectural-concept-design` |
-| Claude Code (manual) | copy the folder to `~/.claude/skills/` (all projects) or `.claude/skills/` (one project) |
-| Codex | copy the folder to `~/.codex/skills/`, or ask Codex to install it with `$skill-installer` and the URL `https://github.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design/tree/main/skills/architectural-concept-design` |
-| Any agent (skills CLI) | `npx skills add Mhrnqaruni/ai-agent-skill-architectural-concept-design` |
-| Claude apps | download `architectural-concept-design.zip` from the [latest release](https://github.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design/releases/latest) and upload it under Settings > Capabilities > Skills |
+| Claude Code | `/plugin marketplace add Mhrnqaruni/ai-agent-skill-architectural-concept-design`, then `/plugin install architectural-concept-design@architectural-concept-design`. Or copy the folder to `~/.claude/skills/` (all projects) or `.claude/skills/` (one project) |
+| Codex | in Codex: `$skill-installer install https://github.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design/tree/main/skills/architectural-concept-design`, or copy the folder to `~/.agents/skills/` |
+| GitHub Copilot, Cursor, Gemini CLI, OpenCode, Goose, Amp | copy the folder to `.agents/skills/` in the project, or to `~/.agents/skills/` for every project |
+| Any agent, from a terminal | `npx skills add Mhrnqaruni/ai-agent-skill-architectural-concept-design` or `gh skill install Mhrnqaruni/ai-agent-skill-architectural-concept-design architectural-concept-design` |
+| Claude apps | download `architectural-concept-design.zip` from the [latest release](https://github.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design/releases/latest) and upload it under Customize > Skills |
 
 The engine needs Python 3.10 or newer with `ezdxf`, `PyMuPDF` and `Pillow`. With
 [uv](https://docs.astral.sh/uv/) the agent runs `uv run scripts/concept.py ...`, which installs
@@ -220,8 +220,8 @@ edges is assigned to a room, the stairs, circulation or the walls.
 
   Run them with `claude plugin eval skills/architectural-concept-design --allow-tools Write,Edit,Bash`.
 - **Validation:**
-  - CI checks SKILL.md with the reference validator, `skills-ref`, and keeps the version numbers
-    consistent.
+  - CI checks SKILL.md with the official Agent Skills validator, `skills-ref`, and keeps the
+    version numbers consistent.
   - The plugin marketplace passes `claude plugin validate . --strict`.
 
 ## Repository layout
@@ -233,7 +233,10 @@ skills/architectural-concept-design/   the skill (copy this folder to install)
 ├── scripts/concept.py                 engine command line
 ├── scripts/conceptdesign/             model, rules, areas, plans, elevations, sheets, scene, web
 ├── assets/                            viewer (three.js r147), templates, JSON Schema
+├── agents/openai.yaml                 display metadata for Codex
 └── evals/                             evaluation cases
+.claude-plugin/marketplace.json        Claude Code plugin marketplace
+plugin.json                            Agent Plugins manifest
 examples/family-house/                 example design model (source of the figures)
 tests/                                 engine and documentation tests
 tools/                                 figures, packaging, version check

@@ -11,7 +11,7 @@ abstract: >-
 authors:
   - family-names: Gharooni
     given-names: Mehran
-version: 1.0.0
+version: 1.0.1
 date-released: 2026-11-08
 license: MIT
 repository-code: "https://github.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design"

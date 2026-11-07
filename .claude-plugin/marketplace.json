@@ -1,18 +1,19 @@
 {
   "name": "architectural-concept-design",
+  "description": "Agent skill: a building brief becomes a checked concept design with CAD drawings, a furnished 3D model and an area schedule.",
   "owner": {
     "name": "Mehran Gharooni",
     "url": "https://github.com/Mhrnqaruni"
   },
   "metadata": {
     "description": "Agent skill: a building brief becomes a checked concept design with CAD drawings, a furnished 3D model and an area schedule.",
-    "version": "1.0.0"
+    "version": "1.0.1"
   },
   "plugins": [
     {
       "name": "architectural-concept-design",
       "description": "Turns a building brief into a checked concept design: floor plans, elevations and a section (DXF, PDF), a furnished three.js model and an exact area schedule, with circulation, door-swing, daylight, stair, area and setback rules checked first.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "source": "./",
       "strict": false,
       "skills": ["./skills/architectural-concept-design"],

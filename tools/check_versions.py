@@ -18,7 +18,7 @@ def versions():
     found["SKILL.md metadata.version"] = re.search(r'version:\s*"?([0-9][^"\s]*)"?', skill_md).group(1)
     init = (SKILL / "scripts" / "conceptdesign" / "__init__.py").read_text(encoding="utf-8")
     found["conceptdesign.__version__"] = re.search(r'__version__\s*=\s*"([^"]+)"', init).group(1)
-    for manifest in sorted(ROOT.glob(".*-plugin/plugin.json")):
+    for manifest in sorted(ROOT.glob(".*-plugin/plugin.json")) + sorted(ROOT.glob("plugin.json")):
         found[str(manifest.relative_to(ROOT))] = json.loads(manifest.read_text(encoding="utf-8"))["version"]
     for market in sorted(ROOT.glob(".*-plugin/marketplace.json")):
         data = json.loads(market.read_text(encoding="utf-8"))

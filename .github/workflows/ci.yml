@@ -59,10 +59,10 @@ jobs:
       - name: Fonts for the drawing renderer
         run: sudo apt-get update -q && sudo apt-get install -y -q --no-install-recommends fonts-dejavu-core
 
-      - name: Validate SKILL.md against the Agent Skills specification
+      - name: Validate SKILL.md with the official Agent Skills validator
         run: |
-          python -m pip install skills-ref
-          python -c "import sys; from pathlib import Path; from skills_ref import validate; p = validate(Path('skills/architectural-concept-design')); print(p or 'skills-ref: valid'); sys.exit(1 if p else 0)"
+          python -m pip install "skills-ref @ git+https://github.com/agentskills/agentskills.git#subdirectory=skills-ref"
+          skills-ref validate skills/architectural-concept-design
 
       - name: Versions agree
         run: python tools/check_versions.py

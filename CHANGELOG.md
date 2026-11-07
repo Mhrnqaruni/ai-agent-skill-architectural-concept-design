@@ -4,6 +4,23 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-11-08
+
+### Added
+
+- `agents/openai.yaml`, which supplies the skill's display name, description and default prompt
+  in Codex.
+- A root `plugin.json` (Agent Plugins 1.0.0) for agents that install plugins from a repository.
+- Install instructions for agents that read `.agents/skills/`: Codex, GitHub Copilot, Cursor,
+  Gemini CLI, OpenCode, Goose and Amp. Also `gh skill install` and the one-command Claude Code
+  install.
+
+### Changed
+
+- CI validates the skill with the official `skills-ref`, installed from the Agent Skills
+  repository.
+- Claude apps upload location updated to Customize > Skills.
+
 ## [1.0.0] - 2026-11-08
 
 ### Added
@@ -31,4 +48,5 @@ All notable changes to this project are documented here. The format follows
 - Evaluation cases in the `claude plugin eval` layout, an engine test suite, CI, and an example
   project.
 
+[1.0.1]: https://github.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design/releases/tag/v1.0.1
 [1.0.0]: https://github.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design/releases/tag/v1.0.0

@@ -13,7 +13,7 @@ description: >-
 license: MIT
 compatibility: Python 3.10+ with ezdxf, PyMuPDF and Pillow (uv installs them automatically); headless renders need Chrome, Edge or Chromium.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
   author: Mehran Gharooni
 ---
 

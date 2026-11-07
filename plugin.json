@@ -1,0 +1,11 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "architectural-concept-design",
+  "version": "1.0.1",
+  "description": "Turns a building brief into a checked concept design: floor plans, elevations and a section (DXF, PDF), a furnished three.js model and an exact area schedule.",
+  "author": {"name": "Mehran Gharooni", "url": "https://github.com/Mhrnqaruni"},
+  "homepage": "https://github.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design",
+  "repository": "https://github.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design",
+  "license": "MIT",
+  "keywords": ["architecture", "floor-plan", "cad", "dxf", "3d", "threejs", "design"]
+}
