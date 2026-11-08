@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- A 52-second overview video of the example project (`docs/media/overview.mp4`), linked from the
+  README.
+
 ## [1.0.1] - 2026-11-08
 
 ### Added
@@ -48,5 +55,6 @@ All notable changes to this project are documented here. The format follows
 - Evaluation cases in the `claude plugin eval` layout, an engine test suite, CI, and an example
   project.
 
+[Unreleased]: https://github.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design/compare/v1.0.1...HEAD
 [1.0.1]: https://github.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design/releases/tag/v1.0.1
 [1.0.0]: https://github.com/Mhrnqaruni/ai-agent-skill-architectural-concept-design/releases/tag/v1.0.0
